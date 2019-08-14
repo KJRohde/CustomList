@@ -9,7 +9,6 @@ namespace KyleList
     public class KyleCustomList<T>
     {
         //member variables
-
         public T[] items;
         public T[] subArray;
         public int capacity = 4;
@@ -32,6 +31,7 @@ namespace KyleList
             }
         }
         public int count;
+
 
         //construct
  
@@ -65,15 +65,23 @@ namespace KyleList
         }
         public void Remove(T itemToRemove)
         {
-            foreach(T item in items)
+            for (int i = 0; i < count; i++)
             {
-                if (itemToRemove.Equals(items[count]))
+                if (itemToRemove.Equals(items[i]))
                 {
-                    for (int i = count; i < capacity; i++)
+                    for (int n = (i); n <= count - 1; n++)
                     {
-                        items[count] = items[count + 1];
-                        count--;
+                        if (n < count - 1)
+                        {
+                            items[n] = items[n + 1];
+                        }
+                        else if (n == count - 1)
+                        {
+                            items[n] = default(T);
+                        }
                     }
+                    count--;
+                    break;
                 }
             }
         }
