@@ -19,8 +19,7 @@ namespace KyleList
                 capacity = value;
             }
         }
-        public int index;
-        public T this[int Index]
+        public T this[int index]
         {
             get
             {
@@ -45,7 +44,7 @@ namespace KyleList
 
         public void Add(T item)
         {
-            if (count <= capacity)
+            if (count < capacity)
             {
                 items[count] = item;
                 count++;
@@ -53,6 +52,7 @@ namespace KyleList
             else
             {
                 capacity *= 2;
+                items = new T[capacity];
                 items[count] = item;
                 count++;
             }
