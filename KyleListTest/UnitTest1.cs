@@ -31,14 +31,15 @@ namespace KyleListTest
         {
             //arrange
             KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 2;
+            int expected = 5;
             int actual;
 
 
             //act
             testList.Add(1);
             testList.Add(2);
-            actual = testList[1];
+            testList.Add(5);
+            actual = testList[2];
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -47,17 +48,18 @@ namespace KyleListTest
         //add a test for when array size must change
 
         [TestMethod]
-        public void Add_AddToEmptyList_CountGoesToOne()
+        public void Add_AddToEmptyList_CountGoesToTwo()
         {
             //arrange
             KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 1;
+            int expected = 2;
             int actual;
 
 
             //act
             testList.Add(5);
-            actual = testList.Count;
+            testList.Add(1);
+            actual = testList.count;
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -81,107 +83,107 @@ namespace KyleListTest
             testList.Add(9);
             testList.Add(9);
             testList.Add(9);
-            actual = testList.Capacity;
+            actual = testList.capacity;
 
             //assert
             Assert.AreEqual(expected, actual);
         }
-        public void Add_AddToFullArray_PreviousArrayStays()
-        {
-            //arrange
-            //Adding 5 to array capacity each time capacity is exceeded
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int[] items expected = [5, 2, 3, 7, 8, 9, 0, 0, 0, 0];
-            int[] items actual;
+        //        public void Add_AddToFullArray_PreviousArrayStays()
+        //        {
+        //            //arrange
+        //            //Adding 5 to array capacity each time capacity is exceeded
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            int[] expected = [5, 2, 3, 7, 8, 9, 0, 0, 0, 0];
+        //            int[] actual;
 
 
-            //act
-            testList.Add(5);
-            testList.Add(2);
-            testList.Add(3);
-            testList.Add(7);
-            testList.Add(8);
-            testList.Add(9);
-            actual = testList.items;
+        //            //act
+        //            testList.Add(5);
+        //            testList.Add(2);
+        //            testList.Add(3);
+        //            testList.Add(7);
+        //            testList.Add(8);
+        //            testList.Add(9);
+        //            actual = testList.items;
 
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        //Remove from list methods
-        public void Remove_RemoveFromListofOne_ReturnEmptyList()
-        {
-            //arrange
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 0;
-            int actual;
-
-
-            //act
-            testList.Remove(1);
-            actual = testList.Count;
-
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        public void Remove_ReduceCount_ReduceCountByOne()
-        {
-            //arrange
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 3;
-            int actual;
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
+        //        //Remove from list methods
+        //        public void Remove_RemoveFromListofOne_ReturnEmptyList()
+        //        {
+        //            //arrange
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            int expected = 0;
+        //            int actual;
 
 
-            //act
-            testList.Remove(1);
-            actual = testList.Count;
+        //            //act
+        //            testList.Remove(1);
+        //            actual = testList.count;
 
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        public void Remove_RemoveMultipleIndexes_ReduceCountByNumberOfInstances()
-        {
-            //arrange
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 7;
-            int actual;
-
-
-            //act
-            testList.Remove(1);
-            actual = testList.Count;
-
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        public void Remove_RemoveNothing_ReturnSameList()
-        {
-            //arrange
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            expected = testList;
-            actual;
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
+        //        public void Remove_ReduceCount_ReduceCountByOne()
+        //        {
+        //            //arrange
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            int expected = 3;
+        //            int actual;
 
 
-            //act
-            testList.Remove(1);
-            actual = testList;
+        //            //act
+        //            testList.Remove(1);
+        //            actual = testList.count;
 
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        public void Remove_RemoveFromMiddleOfList_ScootIndexOver()
-        {
-            //arrange
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 3;
-            int actual;
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
+        //        public void Remove_RemoveMultipleIndexes_ReduceCountByNumberOfInstances()
+        //        {
+        //            //arrange
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            int expected = 7;
+        //            int actual;
 
 
-            //act
-            testList.Remove(6);
-            actual = testList[2];
+        //            //act
+        //            testList.Remove(1);
+        //            actual = testList.Count;
 
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
+        //        public void Remove_RemoveNothing_ReturnSameList()
+        //        {
+        //            //arrange
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            expected = testList;
+        //            actual;
+
+
+        //            //act
+        //            testList.Remove(1);
+        //            actual = testList;
+
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
+        //        public void Remove_RemoveFromMiddleOfList_ScootIndexOver()
+        //        {
+        //            //arrange
+        //            KyleCustomList<int> testList = new KyleCustomList<int>();
+        //            int expected = 3;
+        //            int actual;
+
+
+        //            //act
+        //            testList.Remove(6);
+        //            actual = testList[2];
+
+        //            //assert
+        //            Assert.AreEqual(expected, actual);
+        //        }
     }
 }

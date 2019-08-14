@@ -11,20 +11,51 @@ namespace KyleList
         //member variables
 
         public T[] items;
-        public int arrayCapacity;
+        public int capacity = 4;
+        public int Capacity
+        {
+            set
+            {
+                capacity = value;
+            }
+        }
+        public int index;
+        public T this[int Index]
+        {
+            get
+            {
+                return items[index];
+            }
+            set
+            {
+                items[index] = value;
+            }
+        }
+        public int count;
 
         //construct
  
         public KyleCustomList()
+
         {
-            arrayCapacity = 4;
-            items = new T[arrayCapacity];
+            count = 0;
+            items = new T[capacity];
         }
         //methods
 
-        public void Add(T itemToAdd)
+        public void Add(T item)
         {
-
+            if (count <= capacity)
+            {
+                items[count] = item;
+                count++;
+            }
+            else
+            {
+                capacity *= 2;
+                items[count] = item;
+                count++;
+            }
         }
     }
 }
