@@ -223,5 +223,106 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        //Adding two arrays test methods
+        [TestMethod]
+        public void CombineTwoLists_CombineTwoLists_RightListAfterLeftList()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+            KyleCustomList<int> testListRight = new KyleCustomList<int>();
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            KyleCustomList<int> expected = new KyleCustomList<int>() { 2, 4, 6, 3, 5, 6 };
+            KyleCustomList<int> actual;
+
+
+            //act
+            testListLeft.Add(2);
+            testListLeft.Add(4);
+            testListLeft.Add(6);
+            testListRight.Add(3);
+            testListRight.Add(5);
+            testListRight.Add(6);
+
+
+            addedList = testListLeft + testListRight;
+            actual = addedList;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CombineTwoLists_CombineEmptyListRight_LeftListUnchanged()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+            KyleCustomList<int> testListRight = new KyleCustomList<int>();
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            KyleCustomList<int> expected = new KyleCustomList<int>() { 2, 4, 6};
+            KyleCustomList<int> actual;
+
+
+            //act
+            testListLeft.Add(2);
+            testListLeft.Add(4);
+            testListLeft.Add(6);
+
+
+            addedList = testListLeft + testListRight;
+            actual = addedList;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoLists_CombineEmptyListLeft_RightListUnchanged()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+            KyleCustomList<int> testListRight = new KyleCustomList<int>();
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            KyleCustomList<int> expected = new KyleCustomList<int>() {3, 5, 6 };
+            KyleCustomList<int> actual;
+
+
+            //act
+            testListRight.Add(3);
+            testListRight.Add(5);
+            testListRight.Add(6);
+
+
+            addedList = testListLeft + testListRight;
+            actual = addedList;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoLists_CombineDifferentDataType_SomeException()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+            KyleCustomList<int> testListRight = new KyleCustomList<int>();
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            Exception expected = TypeAccessException;
+            Exception actual;
+
+
+            //act
+            testListLeft.Add(2);
+            testListLeft.Add(4);
+            testListLeft.Add(6);
+            testListRight.Add(3);
+            testListRight.Add(5);
+            testListRight.Add(6);
+
+
+            addedList = testListLeft + testListRight;
+            actual = Exception;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

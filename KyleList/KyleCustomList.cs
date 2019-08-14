@@ -11,6 +11,7 @@ namespace KyleList
         //member variables
         public T[] items;
         public T[] subArray;
+        public T[] addedLists;
         public int capacity = 4;
         public int Capacity
         {
@@ -42,6 +43,15 @@ namespace KyleList
             items = new T[capacity];
         }
         //methods
+        public static KyleCustomList<T> operator + (KyleCustomList<T> left, KyleCustomList<T> right)
+        {
+            KyleCustomList<T> addedLists = new KyleCustomList<T>();
+            for (int i = 0; i < right.count; i++)
+            {
+                left.Add(right[i]);
+            }
+            return addedLists;
+        }
 
         public void Add(T item)
         {
