@@ -78,6 +78,7 @@ namespace KyleListTest
             testList.Add(5);
             testList.Add(2);
             testList.Add(3);
+            testList.Add(6);
             testList.Add(7);
             testList.Add(8);
             testList.Add(9);
@@ -88,27 +89,28 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
-        //        public void Add_AddToFullArray_PreviousArrayStays()
-        //        {
-        //            //arrange
-        //            //Adding 5 to array capacity each time capacity is exceeded
-        //            KyleCustomList<int> testList = new KyleCustomList<int>();
-        //            int[] expected = [5, 2, 3, 7, 8, 9, 0, 0, 0, 0];
-        //            int[] actual;
+        [TestMethod]
+        public void Add_AddToFullArray_PreviousArrayStays()
+        {
+                    //arrange
+                    //Adding doubling capacity each time capacity is exceeded
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            int expected = 2;
+            int actual;
 
 
-        //            //act
-        //            testList.Add(5);
-        //            testList.Add(2);
-        //            testList.Add(3);
-        //            testList.Add(7);
-        //            testList.Add(8);
-        //            testList.Add(9);
-        //            actual = testList.items;
+            //act
+            testList.Add(5);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(7);
+            testList.Add(8);
+            testList.Add(9);
+            actual = testList[1];
 
-        //            //assert
-        //            Assert.AreEqual(expected, actual);
-        //        }
+             //assert
+             Assert.AreEqual(expected, actual);
+        }
         //        //Remove from list methods
         //        public void Remove_RemoveFromListofOne_ReturnEmptyList()
         //        {

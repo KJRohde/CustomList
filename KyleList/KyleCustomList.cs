@@ -11,6 +11,7 @@ namespace KyleList
         //member variables
 
         public T[] items;
+        public T[] subArray;
         public int capacity = 4;
         public int Capacity
         {
@@ -51,10 +52,29 @@ namespace KyleList
             }
             else
             {
+                subArray = items;
                 capacity *= 2;
                 items = new T[capacity];
+                for(int i = 0; i < (capacity/2); i++)
+                {
+                    items[i] = subArray[i];
+                }
                 items[count] = item;
                 count++;
+            }
+        }
+        public void Remove(T itemToRemove)
+        {
+            foreach(T item in items)
+            {
+                if (itemToRemove.Equals(items[count]))
+                {
+                    for (int i = count; i < capacity; i++)
+                    {
+                        items[count] = items[count + 1];
+                        count--;
+                    }
+                }
             }
         }
     }
