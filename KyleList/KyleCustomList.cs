@@ -11,7 +11,6 @@ namespace KyleList
         //member variables
         public T[] items;
         public T[] subArray;
-        public T[] addedLists;
         public int capacity = 4;
         public T input
         {
@@ -59,6 +58,20 @@ namespace KyleList
             for (int i = 0; i < right.count; i++)
             {
                 left.Add(right[i]);
+            }
+            return left;
+        }
+        public static KyleCustomList<T> operator - (KyleCustomList<T> left, KyleCustomList<T> right)
+        {
+            for (int i = 0; i < left.count; i++)
+            {
+                for (int n = 0; n < right.count; n++)
+                {
+                    if (left[i].Equals(right[n]))
+                    {
+                        left.Remove(left[i]);
+                    }
+                }
             }
             return left;
         }
@@ -114,6 +127,42 @@ namespace KyleList
 
             }
             return input;
+        }
+        public KyleCustomList<T> Zip(KyleCustomList<T> left, KyleCustomList<T> right)
+        {
+            if (left.count >= right.count)
+            {
+                while (left.count < right.count+left.count)
+                {
+                    left.Add(default(T));
+                }
+                for (int i = 0; i < right.count; i++)
+                {
+                    left[i*2] = left[i];
+                    left[(i * 2) + 1] = right[i];
+                }
+                for (int n = left.count - right.count; n < right.count; n++)
+                {
+                    left.Add(right[n]);
+                }
+            }
+            else
+            {
+                while (left.count < right.count + left.count)
+                {
+                    left.Add(default(T));
+                }
+                for (int i = 0; i < left.count; i++)
+                {
+                    left[i * 2] = left[i];
+                    left[(i * 2) + 1] = right[i];
+                }
+                for (int n = left.count - right.count; n < right.count; n++)
+                {
+                    left.Add(right[n]);
+                }
+            }
+            return left;
         }
     }
 }
