@@ -12,6 +12,9 @@ namespace KyleList
         public T[] items;
         public T[] subArray;
         public int capacity = 4;
+        public KyleCustomList<T> excessList;
+        public KyleCustomList<T> zippedList;
+        public KyleCustomList<T> fullZip;
         public T input
         {
             get
@@ -128,41 +131,37 @@ namespace KyleList
             }
             return input;
         }
-        public KyleCustomList<T> Zip(KyleCustomList<T> left, KyleCustomList<T> right)
+        public KyleCustomList<T> Zip(KyleCustomList<T> toZip)
         {
-            if (left.count >= right.count)
+            excessList = new KyleCustomList<T>();
+            zippedList = new KyleCustomList<T>();
+            fullZip = new KyleCustomList<T>();
+            if (this.count >= toZip.count)
             {
-                while (left.count < right.count+left.count)
+                for (int j = toZip.count; j < this.count; j++)
                 {
-                    left.Add(default(T));
+                    excessList.Add(this[j]);
                 }
-                for (int i = 0; i < right.count; i++)
+                for (int i = 0; i < toZip.count; i++)
                 {
-                    left[i*2] = left[i];
-                    left[(i * 2) + 1] = right[i];
-                }
-                for (int n = left.count - right.count; n < right.count; n++)
-                {
-                    left.Add(right[n]);
+                    zippedList.Add(this[i]);
+                    zippedList.Add(toZip[i]);
                 }
             }
-            else
+            else if (this.count < toZip.count)
             {
-                while (left.count < right.count + left.count)
+                for (int j = this.count; j < toZip.count; j++)
                 {
-                    left.Add(default(T));
+                    excessList.Add(toZip[j]);
                 }
-                for (int i = 0; i < left.count; i++)
+                for (int i = 0; i < this.count; i++)
                 {
-                    left[i * 2] = left[i];
-                    left[(i * 2) + 1] = right[i];
-                }
-                for (int n = left.count - right.count; n < right.count; n++)
-                {
-                    left.Add(right[n]);
+                    zippedList.Add(this[i]);
+                    zippedList.Add(toZip[i]);
                 }
             }
-            return left;
+            fullZip += (zippedList + excessList);
+            return fullZip;
         }
     }
 }

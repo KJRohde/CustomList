@@ -485,23 +485,77 @@ namespace KyleListTest
         public void Zip_ZipTwoListsSameSize_ZippedList()
         {
             //arrange
-            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
-            KyleCustomList<int> testListRight = new KyleCustomList<int>();
-            KyleCustomList<int> zippedList = new KyleCustomList<int>();
-            string expected = "234566";
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            KyleCustomList<int> testListZip = new KyleCustomList<int>();
+            KyleCustomList<int> test;
+            string expected = "2379614593";
             string actual;
 
-            testListLeft.Add(2);
-            testListLeft.Add(4);
-            testListLeft.Add(6);
-            testListRight.Add(3);
-            testListRight.Add(5);
-            testListRight.Add(6);
+            testList.Add(2);
+            testList.Add(7);
+            testList.Add(6);
+            testList.Add(4);
+            testList.Add(9);
+            testListZip.Add(3);
+            testListZip.Add(9);
+            testListZip.Add(1);
+            testListZip.Add(5);
+            testListZip.Add(3);
 
 
-            zippedList = Zip(testListLeft, testListRight);
-            actual = zippedList.ToString();
+            test = testList.Zip(testListZip);
+            actual = test.ToString();
+
+            Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Zip_ZipTwoListsHeavySecondList_ZippedListWithExtra()
+        {
+            //arrange
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            KyleCustomList<int> testListZip = new KyleCustomList<int>();
+            KyleCustomList<int> test;
+            string expected = "2479153";
+            string actual;
 
+            testList.Add(2);
+            testList.Add(7);
+            testListZip.Add(4);
+            testListZip.Add(9);
+            testListZip.Add(1);
+            testListZip.Add(5);
+            testListZip.Add(3);
+
+
+            test = testList.Zip(testListZip);
+            actual = test.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Zip_ZipTwoListsHeavyFirstList_ZippedListWithExtra()
+        {
+            //arrange
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            KyleCustomList<int> testListZip = new KyleCustomList<int>();
+            KyleCustomList<int> test;
+
+            string expected = "2573649";
+            string actual;
+
+            testList.Add(2);
+            testList.Add(7);
+            testList.Add(6);
+            testList.Add(4);
+            testList.Add(9);
+            testListZip.Add(5);
+            testListZip.Add(3);
+
+
+            test = testList.Zip(testListZip);
+            actual = test.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
