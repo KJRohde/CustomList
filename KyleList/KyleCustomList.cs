@@ -13,6 +13,17 @@ namespace KyleList
         public T[] subArray;
         public T[] addedLists;
         public int capacity = 4;
+        public T input
+        {
+            get
+            {
+                return input;
+            }
+            set
+            {
+                input = value;
+            }
+        }
         public int Capacity
         {
             set
@@ -45,12 +56,11 @@ namespace KyleList
         //methods
         public static KyleCustomList<T> operator + (KyleCustomList<T> left, KyleCustomList<T> right)
         {
-            KyleCustomList<T> addedLists = new KyleCustomList<T>();
             for (int i = 0; i < right.count; i++)
             {
                 left.Add(right[i]);
             }
-            return addedLists;
+            return left;
         }
 
         public void Add(T item)
@@ -94,6 +104,16 @@ namespace KyleList
                     break;
                 }
             }
+        }
+        public override string ToString()
+        {
+            string input = "";
+            for (int i = 0; i < count; i++)
+            {
+                input += items[i].ToString();
+
+            }
+            return input;
         }
     }
 }

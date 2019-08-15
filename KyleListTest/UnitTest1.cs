@@ -232,8 +232,8 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            KyleCustomList<int> expected = new KyleCustomList<int>() { 2, 4, 6, 3, 5, 6 };
-            KyleCustomList<int> actual;
+            string expected = "246356";
+            string actual;
 
 
             //act
@@ -245,8 +245,43 @@ namespace KyleListTest
             testListRight.Add(6);
 
 
+            addedList = testListLeft + testListRight;            
+            actual = addedList.ToString();
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoLists_CombineTwoListsDifferentSizes_RightListAfterLeftList()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+            KyleCustomList<int> testListRight = new KyleCustomList<int>();
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            string expected = "247255882396374";
+            string actual;
+
+
+            //act
+            testListLeft.Add(2);
+            testListLeft.Add(4);
+            testListLeft.Add(7);
+            testListLeft.Add(2);
+            testListLeft.Add(5);
+            testListLeft.Add(5);
+            testListLeft.Add(8);
+            testListLeft.Add(8);
+            testListLeft.Add(2);
+            testListRight.Add(3);
+            testListRight.Add(9);
+            testListRight.Add(6);
+            testListRight.Add(3);
+            testListRight.Add(7);
+            testListRight.Add(4);
+
+
             addedList = testListLeft + testListRight;
-            actual = addedList;
+            actual = addedList.ToString();
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -259,8 +294,8 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            KyleCustomList<int> expected = new KyleCustomList<int>() { 2, 4, 6};
-            KyleCustomList<int> actual;
+            string expected = "246";
+            string actual;
 
 
             //act
@@ -270,7 +305,7 @@ namespace KyleListTest
 
 
             addedList = testListLeft + testListRight;
-            actual = addedList;
+            actual = addedList.ToString();
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -282,8 +317,8 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            KyleCustomList<int> expected = new KyleCustomList<int>() {3, 5, 6 };
-            KyleCustomList<int> actual;
+            string expected = "356";
+            string actual;
 
 
             //act
@@ -293,34 +328,84 @@ namespace KyleListTest
 
 
             addedList = testListLeft + testListRight;
-            actual = addedList;
+            actual = addedList.ToString();
 
             //assert
             Assert.AreEqual(expected, actual);
         }
+        //[TestMethod]
+        //public void CombineTwoLists_CombineDifferentDataType_SomeException()
+        //{
+        //    //arrange
+        //    KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+        //    KyleCustomList<int> testListRight = new KyleCustomList<int>();
+        //    KyleCustomList<int> addedList = new KyleCustomList<int>();
+        //    Exception expected = TypeAccessException;
+        //    Exception actual;
+
+
+        //    //act
+        //    testListLeft.Add(2);
+        //    testListLeft.Add(4);
+        //    testListLeft.Add(6);
+        //    testListRight.Add(3);
+        //    testListRight.Add(5);
+        //    testListRight.Add(6);
+
+
+        //    addedList = testListLeft + testListRight;
+        //    actual = Exception;
+
+        //    //assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //Testing toString Method
         [TestMethod]
-        public void CombineTwoLists_CombineDifferentDataType_SomeException()
+        public void ToString_MakeListAString_MakeIntsAString()
         {
             //arrange
-            KyleCustomList<int> testListLeft = new KyleCustomList<int>();
-            KyleCustomList<int> testListRight = new KyleCustomList<int>();
-            KyleCustomList<int> addedList = new KyleCustomList<int>();
-            Exception expected = TypeAccessException;
-            Exception actual;
-
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            string expected = "5236";
+            string actual;
 
             //act
-            testListLeft.Add(2);
-            testListLeft.Add(4);
-            testListLeft.Add(6);
-            testListRight.Add(3);
-            testListRight.Add(5);
-            testListRight.Add(6);
+            testList.Add(5);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(6);
+            actual = testList.ToString();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_MakeListAString_MakeStringAString()
+        {
+            //arrange
+            KyleCustomList<string> testList = new KyleCustomList<string>();
+            string expected = "Kyle Rohde List";
+            string actual;
 
+            //act
+            testList.Add("Kyle ");
+            testList.Add("Rohde ");
+            testList.Add("List");
+            actual = testList.ToString();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ToString_MakeListAString_MakeBoolAString()
+        {
+            //arrange
+            KyleCustomList<bool> testList = new KyleCustomList<bool>();
+            string expected = "TrueFalseFalse";
+            string actual;
 
-            addedList = testListLeft + testListRight;
-            actual = Exception;
-
+            //act
+            testList.Add(true);
+            testList.Add(false);
+            testList.Add(false);
+            actual = testList.ToString();
             //assert
             Assert.AreEqual(expected, actual);
         }

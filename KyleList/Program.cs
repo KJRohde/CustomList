@@ -10,18 +10,25 @@ namespace KyleList
     {
         static void Main(string[] args)
         {
-            KyleCustomList<int> testList = new KyleCustomList<int>();
-            int expected = 6;
-            int actual;
+                //arrange
+                KyleCustomList<int> testListLeft = new KyleCustomList<int>();
+                KyleCustomList<int> testListRight = new KyleCustomList<int>();
+                KyleCustomList<int> addedList = new KyleCustomList<int>();
+                string expected = "246356";
+                string actual;
 
 
-            //act
-            testList.Add(2);
-            testList.Add(4);
-            testList.Add(7);
-            testList.Add(6);
-            testList.Remove(7);
-            actual = testList[3];
+                //act
+                testListLeft.Add(2);
+                testListLeft.Add(4);
+                testListLeft.Add(6);
+                testListRight.Add(3);
+                testListRight.Add(5);
+                testListRight.Add(6);
+
+
+                addedList = testListLeft + testListRight;
+                actual = addedList.ToString();
 
         }
     }
