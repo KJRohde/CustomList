@@ -9,6 +9,7 @@ namespace KyleListTest
     {
 
         //Add to list methods
+
         [TestMethod]
         public void Add_AddToEmptyList_ItemToIndexZero()
         {
@@ -44,8 +45,6 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
-
-        //add a test for when array size must change
 
         [TestMethod]
         public void Add_AddToEmptyList_CountGoesToTwo()
@@ -111,7 +110,9 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
         //Remove from list methods
+
         [TestMethod]
         public void Remove_RemoveFromListofOne_ReturnEmptyList()
         {
@@ -148,21 +149,7 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
-        //public void Remove_RemoveMultipleIndexes_ReduceCountByNumberOfInstances()
-        //{
-        //    //arrange
-        //    KyleCustomList<int> testList = new KyleCustomList<int>();
-        //    int expected = 7;
-        //    int actual;
 
-
-        //    //act
-        //    testList.Remove(1);
-        //    actual = testList.count;
-
-        //    //assert
-        //    Assert.AreEqual(expected, actual);
-        //}
         [TestMethod]
         public void Remove_RemoveNothing_ReturnSameList()
         {
@@ -225,6 +212,7 @@ namespace KyleListTest
         }
 
         //Adding two arrays test methods
+
         [TestMethod]
         public void CombineTwoLists_CombineTwoLists_RightListAfterLeftList()
         {
@@ -310,6 +298,7 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void CombineTwoLists_CombineEmptyListLeft_RightListUnchanged()
         {
@@ -333,32 +322,9 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
-        //public void CombineTwoLists_CombineDifferentDataType_SomeException()
-        //{
-        //    //arrange
-        //    KyleCustomList<int> testListLeft = new KyleCustomList<int>();
-        //    KyleCustomList<int> testListRight = new KyleCustomList<int>();
-        //    KyleCustomList<int> addedList = new KyleCustomList<int>();
-        //    Exception expected = TypeAccessException;
-        //    Exception actual;
 
+        //to string tests
 
-        //    //act
-        //    testListLeft.Add(2);
-        //    testListLeft.Add(4);
-        //    testListLeft.Add(6);
-        //    testListRight.Add(3);
-        //    testListRight.Add(5);
-        //    testListRight.Add(6);
-
-
-        //    addedList = testListLeft + testListRight;
-        //    actual = Exception;
-
-        //    //assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //Testing toString Method
         [TestMethod]
         public void ToString_MakeListAString_MakeIntsAString()
         {
@@ -376,6 +342,7 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void ToString_MakeListAString_MakeStringAString()
         {
@@ -392,6 +359,7 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void ToString_MakeListAString_MakeBoolAString()
         {
@@ -408,6 +376,9 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        //subtract method tests
+
         [TestMethod]
         public void SubtractTwoLists_SubtractTwoLists_RightListFromLeftList()
         {
@@ -434,6 +405,26 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void SubtractTwoLists_SubtractWithMultipleRemovals_RightListFromLeftList()
+        {
+            //arrange
+            KyleCustomList<int> testListLeft = new KyleCustomList<int>() { 2, 6, 4, 6 };
+            KyleCustomList<int> testListRight = new KyleCustomList<int>() { 3, 4, 6 };
+            KyleCustomList<int> addedList = new KyleCustomList<int>();
+            string expected = "2,4";
+            string actual;
+
+
+            //act
+            addedList = testListLeft - testListRight;
+            actual = addedList.ToString();
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestMethod]
         public void SubtractTwoLists_SubtractEmptyList_LeftListUnchanged()
         {
@@ -457,6 +448,7 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void SubtractTwoLists_SubtractTwoListsLeftEmpty_EmptyList()
         {
@@ -480,6 +472,9 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        //zip tests
+
         [TestMethod]
         public void Zip_ZipTwoListsSameSize_ZippedList()
         {
@@ -507,6 +502,7 @@ namespace KyleListTest
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Zip_ZipTwoListsHeavySecondList_ZippedListWithExtra()
         {
@@ -531,6 +527,7 @@ namespace KyleListTest
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Zip_ZipTwoListsHeavyFirstList_ZippedListWithExtra()
         {
@@ -556,6 +553,7 @@ namespace KyleListTest
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Zip_ZipTwoListsEmptyFirstList_GetSecondList()
         {
@@ -578,6 +576,7 @@ namespace KyleListTest
 
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void Zip_ZipTwoListsEmptySecondList_GetFirstList()
         {
@@ -601,5 +600,6 @@ namespace KyleListTest
 
             Assert.AreEqual(expected, actual);
         }
+
     }
 }

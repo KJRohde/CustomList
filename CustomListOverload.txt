@@ -1,0 +1,23 @@
+KyleCustomList<T> - Operator Overload
+
+Syntax
+public static KyleCustomList<T> operator - (KyleCustomList<T> left, KyleCustomList<T> right)
+
+Parameters
+//List to be removed from
+KyleCustomList<T> left
+//List to search for items to remove from left list
+KyleCustomList<T> right
+
+Returns
+//The list will be altered by removing any instances in "right" from "left" then "left" is returned
+KyleCustomList<T> left
+
+Example
+
+KyleCustomList<int> testListLeft = new KyleCustomList<int>() { 2, 6, 4, 6 };
+KyleCustomList<int> testListRight = new KyleCustomList<int>() { 3, 4, 6 };
+KyleCustomList<int> addedList = new KyleCustomList<int>();
+
+subtractedList = testListLeft - testListRight;
+subtractedList = { 2, 4 }
