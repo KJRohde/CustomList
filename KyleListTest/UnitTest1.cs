@@ -232,7 +232,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "246356";
+            string expected = "2,4,6,3,5,6";
             string actual;
 
 
@@ -258,7 +258,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "247255882396374";
+            string expected = "2,4,7,2,5,5,8,8,2,3,9,6,3,7,4";
             string actual;
 
 
@@ -294,7 +294,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "246";
+            string expected = "2,4,6";
             string actual;
 
 
@@ -317,7 +317,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "356";
+            string expected = "3,5,6";
             string actual;
 
 
@@ -333,7 +333,6 @@ namespace KyleListTest
             //assert
             Assert.AreEqual(expected, actual);
         }
-        //[TestMethod]
         //public void CombineTwoLists_CombineDifferentDataType_SomeException()
         //{
         //    //arrange
@@ -365,7 +364,7 @@ namespace KyleListTest
         {
             //arrange
             KyleCustomList<int> testList = new KyleCustomList<int>();
-            string expected = "5236";
+            string expected = "5,2,3,6";
             string actual;
 
             //act
@@ -382,12 +381,12 @@ namespace KyleListTest
         {
             //arrange
             KyleCustomList<string> testList = new KyleCustomList<string>();
-            string expected = "Kyle Rohde List";
+            string expected = "Kyle,Rohde,List";
             string actual;
 
             //act
-            testList.Add("Kyle ");
-            testList.Add("Rohde ");
+            testList.Add("Kyle");
+            testList.Add("Rohde");
             testList.Add("List");
             actual = testList.ToString();
             //assert
@@ -398,7 +397,7 @@ namespace KyleListTest
         {
             //arrange
             KyleCustomList<bool> testList = new KyleCustomList<bool>();
-            string expected = "TrueFalseFalse";
+            string expected = "True,False,False";
             string actual;
 
             //act
@@ -416,7 +415,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "24";
+            string expected = "2,4";
             string actual;
 
 
@@ -442,7 +441,7 @@ namespace KyleListTest
             KyleCustomList<int> testListLeft = new KyleCustomList<int>();
             KyleCustomList<int> testListRight = new KyleCustomList<int>();
             KyleCustomList<int> addedList = new KyleCustomList<int>();
-            string expected = "246";
+            string expected = "2,4,6";
             string actual;
 
 
@@ -488,7 +487,7 @@ namespace KyleListTest
             KyleCustomList<int> testList = new KyleCustomList<int>();
             KyleCustomList<int> testListZip = new KyleCustomList<int>();
             KyleCustomList<int> test;
-            string expected = "2379614593";
+            string expected = "2,3,7,9,6,1,4,5,9,3";
             string actual;
 
             testList.Add(2);
@@ -515,7 +514,7 @@ namespace KyleListTest
             KyleCustomList<int> testList = new KyleCustomList<int>();
             KyleCustomList<int> testListZip = new KyleCustomList<int>();
             KyleCustomList<int> test;
-            string expected = "2479153";
+            string expected = "2,4,7,9,1,5,3";
             string actual;
 
             testList.Add(2);
@@ -540,7 +539,7 @@ namespace KyleListTest
             KyleCustomList<int> testListZip = new KyleCustomList<int>();
             KyleCustomList<int> test;
 
-            string expected = "2573649";
+            string expected = "2,5,7,3,6,4,9";
             string actual;
 
             testList.Add(2);
@@ -550,6 +549,51 @@ namespace KyleListTest
             testList.Add(9);
             testListZip.Add(5);
             testListZip.Add(3);
+
+
+            test = testList.Zip(testListZip);
+            actual = test.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Zip_ZipTwoListsEmptyFirstList_GetSecondList()
+        {
+            //arrange
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            KyleCustomList<int> testListZip = new KyleCustomList<int>();
+            KyleCustomList<int> test;
+
+            string expected = "4,9,5,3";
+            string actual;
+
+            testListZip.Add(4);
+            testListZip.Add(9);
+            testListZip.Add(5);
+            testListZip.Add(3);
+
+
+            test = testList.Zip(testListZip);
+            actual = test.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Zip_ZipTwoListsEmptySecondList_GetFirstList()
+        {
+            //arrange
+            KyleCustomList<int> testList = new KyleCustomList<int>();
+            KyleCustomList<int> testListZip = new KyleCustomList<int>();
+            KyleCustomList<int> test;
+
+            string expected = "2,7,6,4,9";
+            string actual;
+
+            testList.Add(2);
+            testList.Add(7);
+            testList.Add(6);
+            testList.Add(4);
+            testList.Add(9);
 
 
             test = testList.Zip(testListZip);

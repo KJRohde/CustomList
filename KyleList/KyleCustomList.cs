@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace KyleList
 {
-    public class KyleCustomList<T>
+    public class KyleCustomList<T> : IEnumerable<T>
     {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         //member variables
         public T[] items;
         public T[] subArray;
@@ -56,6 +62,13 @@ namespace KyleList
             items = new T[capacity];
         }
         //methods
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
         public static KyleCustomList<T> operator + (KyleCustomList<T> left, KyleCustomList<T> right)
         {
             for (int i = 0; i < right.count; i++)
@@ -124,10 +137,13 @@ namespace KyleList
         public override string ToString()
         {
             string input = "";
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < count - 1; i++)
             {
-                input += items[i].ToString();
-
+                input += "" + items[i].ToString() + ",";
+            }
+            if (count > 0)
+            {
+                input += items[count - 1];
             }
             return input;
         }
@@ -136,9 +152,9 @@ namespace KyleList
             excessList = new KyleCustomList<T>();
             zippedList = new KyleCustomList<T>();
             fullZip = new KyleCustomList<T>();
-            if (this.count >= toZip.count)
+            if (count >= toZip.count)
             {
-                for (int j = toZip.count; j < this.count; j++)
+                for (int j = toZip.count; j < count; j++)
                 {
                     excessList.Add(this[j]);
                 }
@@ -148,13 +164,13 @@ namespace KyleList
                     zippedList.Add(toZip[i]);
                 }
             }
-            else if (this.count < toZip.count)
+            else if (count < toZip.count)
             {
-                for (int j = this.count; j < toZip.count; j++)
+                for (int j = count; j < toZip.count; j++)
                 {
                     excessList.Add(toZip[j]);
                 }
-                for (int i = 0; i < this.count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     zippedList.Add(this[i]);
                     zippedList.Add(toZip[i]);
